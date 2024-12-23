@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday NEL!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="stars"></div>
+  
+  <div class="container">
+    <h1 class="birthday-text">Happy Birthday</h1>
+    
+    <div class="content-grid">
+      <div class="photo-container">
+        <div class="photo-frame">
+          <img src="one.jpg" alt="Birthday Person" class="photo" id="photo">
+        </div>
+      </div>
+      
+      <div class="message-container">
+        <h2 style="font-size: 2.5em; margin-bottom: 20px;">Lucy!</h2>
+        <p>Wishing you a magical day filled with joy, laughter, and unforgettable moments! 🎉✨</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="visualizer" id="visualizer">
+    <!-- Bars added by JS -->
+  </div>
+
+  <div class="floating-controls">
+    <input type="file" id="photo-upload" accept="image/*" style="display: none">
+    <button class="btn" onclick="document.getElementById('photo-upload').click()">
+      📸 Add Photo
+    </button>
+    <button class="btn" id="musicBtn" onclick="toggleMusic()">
+      🎵 Play Music
+    </button>
+  </div>
+
+  <audio id="birthday-music" src="sky.mp3"></audio>
+  <script src="scripts.js"></script>
+</body>
+</html>

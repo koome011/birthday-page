@@ -1,0 +1,185 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+    
+::-webkit-scrollbar {
+  width: 10px;
+  background: rgba(255,255,255,0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.3);
+  border-radius: 10px;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(45deg, #0a0a2e, #1a1a4f);
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+.stars {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  padding: 50px 20px;
+  min-height: 150vh;
+}
+
+.floating-controls {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  gap: 15px;
+  z-index: 100;
+}
+
+.birthday-text {
+  font-size: clamp(3em, 8vw, 6em);
+  text-align: center;
+  margin: 50px 0;
+  background: linear-gradient(to right, 
+    #ff6b6b, #ffd93d, #6c5ce7, #ff6b6b);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.photo-container {
+  width: 100%;
+  aspect-ratio: 1;
+  perspective: 1000px;
+  margin: auto;
+}
+
+.photo-frame {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: floatAndGlow 5s ease-in-out infinite;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 8px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 0 30px rgba(255, 255, 255, 0.3),
+    0 0 60px rgba(255, 0, 221, 0.2);
+}
+
+.btn {
+  padding: 15px 30px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1.2em;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  border: 2px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s;
+  animation: pulse 2s infinite;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  background: rgba(255,255,255,0.25);
+}
+
+.visualizer {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 3px;
+  padding: 10px 20px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 15px;
+  z-index: 100;
+}
+
+.bar {
+  width: 3px;
+  height: 20px;
+  background: #fff;
+  border-radius: 3px;
+}
+
+.message-container {
+  text-align: center;
+  color: white;
+  font-size: 1.5em;
+  margin: 30px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s forwards;
+}
+
+@keyframes floatAndGlow {
+  0%, 100% { 
+    transform: translateY(0) rotateY(0deg);
+    filter: brightness(1);
+  }
+  50% { 
+    transform: translateY(-20px) rotateY(180deg);
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(0.95); }
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.butterfly {
+  position: fixed;
+  pointer-events: none;
+  width: 30px;
+  height: 30px;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23fff" d="M12,4c3,0,6,2,6,6s-3,6-6,6s-6-2-6-6S9,4,12,4z"/></svg>');
+  filter: hue-rotate(0deg);
+  animation: fly 20s linear infinite, colorChange 3s infinite;
+}
+
+@keyframes fly {
+  0% { transform: translate(0, 100vh) rotate(0deg); }
+  100% { transform: translate(100vw, -100vh) rotate(360deg); }
+}
+
+@keyframes colorChange {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
